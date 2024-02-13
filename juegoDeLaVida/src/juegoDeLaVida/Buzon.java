@@ -24,7 +24,7 @@ public class Buzon {
 
     public synchronized boolean enviarEstado() throws InterruptedException{
         while(cola.size()==0){
-            wait();
+            wait();//yield por la espera semiactiva
         }
         boolean estado = cola.get(0);
         cola.remove(0);
