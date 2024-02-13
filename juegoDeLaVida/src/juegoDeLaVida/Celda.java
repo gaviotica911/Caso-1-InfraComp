@@ -53,54 +53,119 @@ public class Celda extends Thread {
             for(int j=0; j<Tablero.sizeT; j++){
                
                 if (jPos < Tablero.sizeT - 1) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + iPos + "," + (jPos+1) + "]");
                     enviarEstado(Tablero.tableroCeldas[iPos][jPos + 1].buzon);
                     boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
                     if(estadoParcial){
                         vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
                     }else{
                         vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
                     }
                 }
 
                 // Vecino izquierdo
                 if (jPos > 0) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + iPos + "," + (jPos-1) + "]");
                     enviarEstado(Tablero.tableroCeldas[iPos][jPos - 1].buzon);
-                    
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                 }
 
                 // Vecino arriba
                 if (iPos > 0) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + (iPos-1) + "," + (jPos) + "]");
                     enviarEstado(Tablero.tableroCeldas[iPos-1][jPos ].buzon);
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                     
                 }
 
                 // Vecino abajo
                 if (iPos < Tablero.sizeT - 1) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + (iPos+1) + "," + (jPos) + "]");
                     enviarEstado(Tablero.tableroCeldas[iPos+1][jPos ].buzon);
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                     
                 }
 
                 // Vecino diagonal arriba derecha
                 if (iPos > 0 && jPos < Tablero.sizeT - 1) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + (iPos-1) + "," + (jPos+1) + "]");
                     enviarEstado(Tablero.tableroCeldas[iPos-1][jPos+1 ].buzon);
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                     
                 }
 
                 // Vecino diagonal arriba izquierda
                 if (iPos > 0 && jPos > 0) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + (iPos-1) + "," + (jPos-1) + "]");
                     enviarEstado( Tablero.tableroCeldas[iPos - 1][jPos - 1 ].buzon);
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                 
                 }
 
                 // Vecino diagonal abajo derecha
                 if (iPos < Tablero.sizeT - 1 && jPos < Tablero.sizeT - 1) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + (iPos+1) + "," + (jPos+1) + "]");
                     enviarEstado( Tablero.tableroCeldas[iPos + 1][jPos + 1 ].buzon);
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                 
                 }
 
                 // Vecino diagonal abajo izquierda
                 if (iPos < Tablero.sizeT - 1 && jPos > 0) {
+                    System.out.println("se va a enviar el estado de la celda [" + iPos + "," + jPos + "] a la celda [" + (iPos+1) + "," + (jPos-1) + "]");
                     enviarEstado(Tablero.tableroCeldas[iPos + 1][jPos - 1 ].buzon);
+                    boolean estadoParcial=recibirEstado(Tablero.tableroCeldas[i][j].buzon);
+                    if(estadoParcial){
+                        vecinosVivos++;
+                        System.out.println("El contador de vecinos vivos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }else{
+                        vecinosMuertos++;
+                        System.out.println("El contador de vecinos muertos para la celda [" + iPos + "," + jPos + "] es: " + vecinosVivos);
+                    }
                     
                 }
 

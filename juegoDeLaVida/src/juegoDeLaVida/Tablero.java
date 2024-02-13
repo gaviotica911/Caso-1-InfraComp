@@ -18,12 +18,9 @@ public class Tablero {
 
         System.out.println("Ingrese el nombre del archivo:");
 
-        try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Ingrese el total de generaciones:");
-            generaciones = input.nextInt();
-        }
+
         try {
-            String archivoEntrada = "juegoDeLaVida/src/data/" + reader.readLine();
+            String archivoEntrada = "juegoDeLaVida\\src\\data\\" + reader.readLine();
             BufferedReader br = new BufferedReader(new FileReader(archivoEntrada));
             
             // Leer el tamaño del tablero
@@ -39,6 +36,11 @@ public class Tablero {
                     tablero[i][j] = Boolean.parseBoolean(linea[j]);
                     tableroCeldas[i][j]= new Celda(new Buzon(i+1), tablero[i][j], i, j);
                 }
+            }
+
+            try (Scanner input = new Scanner(System.in)) {
+                System.out.println("Ingrese el total de generaciones:");
+                generaciones = input.nextInt();
             }
 
             // Imprimir la matriz cargada desde el archivo
