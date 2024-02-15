@@ -38,14 +38,7 @@ public class CeldaProductor extends Thread{
 
             try {
                 Tablero.barrierTurno.await();
-                boolean[][] matriz = new boolean[Tablero.sizeT][Tablero.sizeT];
-                for (int m = 0; m < Tablero.sizeT; m++) {
-                    for  (int n = 0; n < Tablero.sizeT; n++) {
-                        matriz[m][n] = Tablero.tablero[m][n];
-                    }
                 }
-                Tablero.listado.add(matriz);
-            }
             catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }finally {

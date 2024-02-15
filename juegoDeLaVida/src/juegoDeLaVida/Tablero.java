@@ -19,8 +19,6 @@ public class Tablero {
     public static boolean[][] tablero;
     public static CyclicBarrier barrierTurno;
 
-    public static ArrayList<boolean[][]> listado = new ArrayList();
-
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
       
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -41,7 +39,6 @@ public class Tablero {
         try (Scanner input = new Scanner(System.in)) {
             System.out.println("Ingrese el total de generaciones:");
             generaciones = input.nextInt();
-            generaciones++;
         }
 
         for (int n = 0; n < size; n++) {
@@ -106,7 +103,6 @@ public class Tablero {
         // Continuar con el main
         System.out.println("Todos los Threads productores y consumidores han terminado. Continuar con el main.");
             // Imprimir la matriz cargada desde el archivo
-            eliminarMatricesIguales();
             imprimirMatriz();
             
         } 
@@ -118,17 +114,13 @@ public class Tablero {
 
     // Método para imprimir la matriz
     public static void imprimirMatriz() {
-        for (int i = 0; i < listado.size(); i++){
-            System.out.println("\nTurno:" + i);
-            boolean[][] matriz = listado.get(i);
-            for (boolean[] fila : matriz) {
-                for (boolean celda : fila) {
-                    System.out.print(celda ? "■ " : "□ ");
-                }
-                System.out.println();
+        for (boolean[] fila : tablero) {
+            for (boolean celda : fila) {
+                System.out.print(celda ? "■ " : "□ ");
+            }
+            System.out.println();
             }
 
-        }
     }
 
     public static int contadorVecinos(int i, int j, int N){
@@ -180,37 +172,6 @@ public class Tablero {
                 tablero[iPos][jPos] = true;
             }
         }
-    }
-
-    public static void eliminarMatricesIguales() {
-        for (int i = 0; i < listado.size(); i++) {
-            boolean[][] matrizI = listado.get(i);
-            for (int j = i + 1; j < listado.size(); j++) {
-                boolean[][] matrizJ = listado.get(j);
-                if (sonIguales(matrizI, matrizJ)) {
-                    listado.remove(j);
-                    j--;  // Ajustamos el índice para compensar el desplazamiento
-                }
-            }
-        }
-    }
-
-    private static boolean sonIguales(boolean[][] matriz1, boolean[][] matriz2) {
-        if (matriz1.length != matriz2.length || matriz1[0].length != matriz2[0].length) {
-            return false;
-        }
-        for (int i = 0; i < matriz1.length; i++) {
-            for (int j = 0; j < matriz1[i].length; j++) {
-                if (matriz1[i][j] != matriz2[i][j]) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public List<boolean[][]> getListado() {
-        return listado;
     }
 
 }
