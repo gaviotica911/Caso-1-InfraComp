@@ -11,13 +11,13 @@ public class Buzon {
 
     public Buzon(int capacidad) {
         this.capacidad = capacidad;
-        this.cola = new ArrayBlockingQueue<Boolean>(capacidad);//revisar el tamaño porsi
+        this.cola = new ArrayBlockingQueue<Boolean>(capacidad);
     }
 
-    public synchronized void enviarEstado(boolean estado) throws InterruptedException{ //lo recibo de
+    public synchronized void enviarEstado(boolean estado) throws InterruptedException{
         
         while(cola.size()==capacidad){
-            //System.out.println("toy lleno");
+            //System.out.println("estoy lleno");
             wait();
         }
         cola.add(estado);
@@ -35,6 +35,5 @@ public class Buzon {
         notify();
         return estado;
     }
-
 
 }

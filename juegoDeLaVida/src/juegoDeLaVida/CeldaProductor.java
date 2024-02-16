@@ -3,7 +3,6 @@ package juegoDeLaVida;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-import java.util.concurrent.Semaphore;
 
 
 public class CeldaProductor extends Thread{
@@ -13,8 +12,6 @@ public class CeldaProductor extends Thread{
     private int jPos;
     private CyclicBarrier barrierEnvio;
 
-    private static Semaphore semaforoImprimir = new Semaphore(1);
-    private static boolean mensajeImpreso = false;
 
     public CeldaProductor(boolean estado, int iPos, int jPos, CyclicBarrier barrierEnvio){
         this.estado = estado;
@@ -43,7 +40,6 @@ public class CeldaProductor extends Thread{
                 e.printStackTrace();
             }finally {
                 // Liberamos el semáforo
-                semaforoImprimir.release();
             }
             actualizarEstado();
             
@@ -94,6 +90,7 @@ public class CeldaProductor extends Thread{
             } catch (Exception e) {
                 // Aquí maneja la excepción específica que ocurre al tratar de obtener el vecino de abajo izquierda
             }
+            Thread.yield();
             try {
                 barrierEnvio.await();
             } catch (InterruptedException | BrokenBarrierException e) {

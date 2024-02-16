@@ -55,6 +55,7 @@ public class CeldaConsumidor extends Thread {
         boolean centinela = true;
         while(centinela){
             conteo += recibirEstado(buzon);
+            Thread.yield();
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
