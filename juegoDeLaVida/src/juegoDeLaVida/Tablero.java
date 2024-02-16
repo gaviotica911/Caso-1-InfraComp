@@ -5,11 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.concurrent.CyclicBarrier;
 
 public class Tablero {
@@ -101,7 +97,7 @@ public class Tablero {
         }
 
         // Continuar con el main
-        System.out.println("Todos los Threads productores y consumidores han terminado. Continuar con el main.");
+        System.out.println("\nTodos los Threads productores y consumidores han terminado. Continuar con el main. \n");
             // Imprimir la matriz cargada desde el archivo
             imprimirMatriz();
             
@@ -120,7 +116,7 @@ public class Tablero {
             }
             System.out.println();
             }
-
+            System.out.println("\n");
     }
 
     public static int contadorVecinos(int i, int j, int N){
