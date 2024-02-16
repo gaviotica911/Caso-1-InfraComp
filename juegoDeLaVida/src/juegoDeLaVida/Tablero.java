@@ -27,7 +27,7 @@ public class Tablero {
 
 
     try {
-        String archivoEntrada = "juegoDeLaVida\\src\\data\\" + reader.readLine();
+        String archivoEntrada = "src\\data" + reader.readLine();
         BufferedReader br = new BufferedReader(new FileReader(archivoEntrada));
             
         // Leer el tamaño del tablero
