@@ -54,13 +54,19 @@ public class CeldaConsumidor extends Thread {
         int conteo = 0;
         boolean centinela = true;
         while(centinela){
-            conteo += recibirEstado(buzon);
-            Thread.yield();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+            while(buzon.cola.size() == 0){
+                Thread.yield();
             }
+
+            conteo += recibirEstado(buzon);
+            
+           // try {
+              //  Thread.sleep(1000);
+          //  } catch (InterruptedException e) {
+           //     e.printStackTrace();}
+            
+
             if(totalVecinos == conteo){
                 centinela = false;
             }

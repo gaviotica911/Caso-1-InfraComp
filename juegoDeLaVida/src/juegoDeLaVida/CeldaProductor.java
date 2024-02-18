@@ -38,8 +38,6 @@ public class CeldaProductor extends Thread{
                 }
             catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
-            }finally {
-                // Liberamos el semáforo
             }
             actualizarEstado();
             
@@ -90,7 +88,8 @@ public class CeldaProductor extends Thread{
             } catch (Exception e) {
                 // Aquí maneja la excepción específica que ocurre al tratar de obtener el vecino de abajo izquierda
             }
-            Thread.yield();
+            
+           // Thread.yield();
             try {
                 barrierEnvio.await();
             } catch (InterruptedException | BrokenBarrierException e) {

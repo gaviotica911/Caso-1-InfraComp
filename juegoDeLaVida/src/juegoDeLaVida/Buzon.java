@@ -5,7 +5,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class Buzon {
     
-    private BlockingQueue<Boolean> cola;
+    public BlockingQueue<Boolean> cola;
     private int capacidad;
 
 
