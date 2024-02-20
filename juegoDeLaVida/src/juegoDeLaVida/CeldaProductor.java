@@ -7,7 +7,6 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CeldaProductor extends Thread{
     private boolean estado;
-
     private int iPos;
     private int jPos;
     private CyclicBarrier barrierEnvio;
@@ -32,7 +31,6 @@ public class CeldaProductor extends Thread{
     public void run(){
         for(int i = 0; i < Tablero.generaciones; i++)
         {
-
             try {
                 Tablero.barrierTurno.await();
                 }
@@ -40,7 +38,7 @@ public class CeldaProductor extends Thread{
                 e.printStackTrace();
             }
             actualizarEstado();
-            
+
             try {
                 enviarEstado(Tablero.tableroBuzones[iPos - 1][jPos]);
             } catch (Exception e) {
@@ -103,6 +101,4 @@ public class CeldaProductor extends Thread{
         boolean elEstado = Tablero.tablero[iPos][jPos];
         this.estado = elEstado;
     }
-
-    
 }

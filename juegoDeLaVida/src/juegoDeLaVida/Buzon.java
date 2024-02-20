@@ -17,21 +17,16 @@ public class Buzon {
     public synchronized void enviarEstado(boolean estado) throws InterruptedException{
         
         while(cola.size()==capacidad){
-            //System.out.println("estoy lleno");
             wait();
         }
         cola.add(estado);
-        //System.out.println("Estado enviado correctamente");
         notify();
     }
 
 
     public synchronized boolean recibirEstado() throws InterruptedException{
-    //    while(cola.size()==0){
-    //        wait();//yield por la espera semiactiva
-    //    }
+
         boolean estado = cola.take();
-        //System.out.println("Estado recibido correctamente");
         notify();
         return estado;
     }
