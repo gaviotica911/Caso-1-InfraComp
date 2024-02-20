@@ -23,7 +23,7 @@ public class Tablero {
 
 
     try {
-        String archivoEntrada = "juegoDeLaVida/src/data/" + reader.readLine();
+        String archivoEntrada = "src/data/" + reader.readLine();
         BufferedReader br = new BufferedReader(new FileReader(archivoEntrada));
             
         // Leer el tamaño del tablero
@@ -48,22 +48,18 @@ public class Tablero {
 
         CyclicBarrier barrierRecepcion = new CyclicBarrier(sizeT*sizeT, () -> {
         // Acción a ejecutar cuando todos los hilos hayan llegado a la barrera
-        System.out.println("Se han recibido todos los estados en todas las celdas...");
         });
 
         CyclicBarrier barrierCalculo = new CyclicBarrier(sizeT*sizeT, () -> {
             // Acción a ejecutar cuando todos los hilos hayan llegado a la barrera
-            System.out.println("Se han calculado todos los nuevos estados...");
             });
 
         CyclicBarrier barrierEnvio = new CyclicBarrier(sizeT*sizeT, () -> {
                 // Acción a ejecutar cuando todos los hilos hayan llegado a la barrera
-                System.out.println("Se han enviado todos los estados de todas las celdas...");
                 });
 
         barrierTurno = new CyclicBarrier(sizeT*sizeT*2, () -> {
             // Acción a ejecutar cuando todos los hilos hayan llegado a la barrera
-            System.out.println("Han llegado todas a la misma generacion...");
             });
 
         Thread[][] productores = new Thread[size][size];  // Matriz de Threads productores
